@@ -1,5 +1,6 @@
-@main def hello: Unit =
-  println("Hello world!")
-  println(msg)
+import one._
 
-def msg = "I was compiled by Scala 3. :)"
+@main def hello: Unit =
+  val answer = One.main1
+  println(s"Answer = $answer")
+
