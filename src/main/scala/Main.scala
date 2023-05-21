@@ -1,7 +1,8 @@
 import one._
 import two._
+import three._
 
 @main def hello: Unit =
-  val answer = Two.mainB
+  val answer = Three.mainB
   println(s"Answer = $answer")
 
