@@ -1,6 +1,6 @@
 import one._
 
 @main def hello: Unit =
-  val answer = One.main1
+  val answer = One.mainA
   println(s"Answer = $answer")
 
