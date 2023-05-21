@@ -1,5 +1,4 @@
 package one
-import javax.swing.text.html.InlineView
 import scala.io.Source
 
 object One {
