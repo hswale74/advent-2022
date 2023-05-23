@@ -107,7 +107,30 @@ object Five {
 
     afterGive
 
+  def applyInstructionB(initial: Map[Int, List[Char]], instruction: String): Map[Int, List[Char]] =
+    println("*"*50)
+    (1 to initial.size).map(initial(_)).foreach(println)
+    println("-"*10)
+    println(instruction)
+    println("-"*10)
+    val parsed = instruction.split(" ")
+    val quantity = parsed(1).toInt
+    val giver = parsed(3).toInt
+    val receiver = parsed(5).toInt
 
+    val afterTake = initial.updated(
+      giver,
+      initial(giver).drop(quantity)
+    )
+
+    val afterGive = afterTake.updated(
+      receiver,
+      initial(giver).take(quantity) ++ initial(receiver)
+    )
+
+    (1 to afterGive.size).map(afterGive(_)).foreach(println)
+
+    afterGive
 
 
   val stackMap2 = instructions
@@ -116,7 +139,14 @@ object Five {
     )
 
 
-  val mainA = (1 to 9 map (stackMap2(_).head)).mkString
+  val mainA = (1 to 9 map (stackMap2(_).headOption)).filter(_.isDefined).flatten.mkString
+
+
+  val stackMap2B = instructions.foldLeft(stackMap)(
+    applyInstructionB
+  )
+
+  val mainB = (1 to 9 map (stackMap2B(_).headOption)).filter(_.isDefined).flatten.mkString
 
 
 }

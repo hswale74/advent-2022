@@ -5,6 +5,6 @@ import four._
 import five._
 
 @main def hello: Unit =
-  val answer = Five.mainA
+  val answer = Five.mainB
   println(s"Answer = $answer")
 
