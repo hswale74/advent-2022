@@ -6,8 +6,9 @@ import five._
 import six._
 import seven._
 import eight._
+import nine._
 
 @main def hello: Unit =
-  val answer = Eight.mainB
+  val answer = Nine.mainA
   println(s"Answer = $answer")
 
