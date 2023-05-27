@@ -12,6 +12,7 @@ object Nine {
     .map(_.split(" "))
 
   type Pos = (Int, Int)
+
   extension (pos: Pos)
     @targetName("+")
     infix def + (pos2: Pos) =
@@ -27,6 +28,10 @@ object Nine {
   type Laurels = Set[Pos]
 
   type State = (Pos, Pos, Laurels)
+
+  type Snake = List[Pos]
+
+  type State2 = (Snake, Laurels)
 
   def parseInstruction(arr: Array[String]): List[Pos] =
     val direction = arr(0)
@@ -51,6 +56,26 @@ object Nine {
         else go((newHeadPos, headPos, laurels.union(Set(headPos))), tail)
       }
       case _ => state
+
+  def applyInsToSnk(upStreamPos: Pos, snake: Snake, delta: Pos, acc: Snake): Snake =
+    snake match
+      case head :: Nil =>
+        if upStreamPos acceptableDistance head
+        then acc ++ snake
+        else acc ++ head + delta :: Nil
+      case head :: tail =>
+        if upStreamPos acceptableDistance head
+        then acc ++ snake
+        else applyInsToSnk(head + delta, tail, delta, acc ++ ((head + delta) :: Nil))
+
+//    def go2(state: State2, instruction: Instruction): State2 =
+//      val (snake, laurels) = state
+//
+//      instruction match
+//        case head :: tail =>
+
+
+
 
   val startingPos: Pos = (0,0)
   val startingState: State = (startingPos, startingPos, Set(startingPos))
