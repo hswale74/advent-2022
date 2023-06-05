@@ -1,6 +1,6 @@
 // For more information on writing tests, see
 // https://scalameta.org/munit/docs/getting-started.html
-package snake
+import snake.Game
 
 class MySuite extends munit.FunSuite {
 

@@ -1,4 +1,5 @@
 package eight
+import scala.annotation.tailrec
 import scala.io.Source
 
 object Eight {
@@ -8,7 +9,7 @@ object Eight {
     .split("\n")
     .map(_.toArray.map(_.toString.toInt))
 
-  def isVisible(row: Int, column: Int): Int =
+  private def isVisible(row: Int, column: Int): Int =
     val left = (0 until column map data(row)).maxOption
     val up = (0 until row).map(data).map(_(column)).maxOption
     val right = (column + 1 until data(0).length map data(row)).maxOption
@@ -23,7 +24,8 @@ object Eight {
     yield
       isVisible(row, column)).sum + (data.length * 4 - 4)
 
-  def foldLeftWhile(a: Int)(height: Int)(lst: List[Int]): Int =
+  @tailrec
+  private def foldLeftWhile(a: Int)(height: Int)(lst: List[Int]): Int =
     lst match
       case head :: tail =>
         if head >= height

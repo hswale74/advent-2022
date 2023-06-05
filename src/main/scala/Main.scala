@@ -1,12 +1,9 @@
-import snake._
 
-@main def hello: Unit =
 
+object Main extends App {
   println("Hello")
-//  object NineB extends NineB{
-//
-//  }
-  object thisGame extends Game {}
-  val answer = thisGame.main("/Users/hasnatswaleheen/clones/advent-2022/data/nine_example.txt")
-  println(s"Answer = $answer")
+}
+//  object thisGame extends Game {}
+//  val answer = thisGame.main("/Users/hasnatswaleheen/clones/advent-2022/data/nine_example.txt")
+//  println(s"Answer = $answer")
 
