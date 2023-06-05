@@ -1,11 +1,12 @@
-import one._
-import two._
-import three._
-import four._
-import five._
-import six._
+import snake._
 
 @main def hello: Unit =
-  val answer = Six.mainA
+
+  println("Hello")
+//  object NineB extends NineB{
+//
+//  }
+  object thisGame extends Game {}
+  val answer = thisGame.main("/Users/hasnatswaleheen/clones/advent-2022/data/nine_example.txt")
   println(s"Answer = $answer")
 
