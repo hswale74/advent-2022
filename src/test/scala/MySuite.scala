@@ -1,6 +1,6 @@
 // For more information on writing tests, see
 // https://scalameta.org/munit/docs/getting-started.html
-package snake
+import snake.Game
 
 class MySuite extends munit.FunSuite {
 
@@ -41,5 +41,18 @@ class MySuite extends munit.FunSuite {
       val headRight: Pos = (0, 2)
       assertEquals(tail acceptableDistance headRight, false)
   }
-  
+
+  test("test process delta") {
+    new Game:
+      val tail = (0,0)
+      val heads = List((1,1), (1,-1))
+
+      def testThis(thisHead: Pos): Unit =
+        val delta = (1,0)
+        val actual = processDelta(List(thisHead, tail), delta)
+        val expected = List(thisHead + delta, thisHead)
+        assertEquals(actual, expected)
+
+      heads.foreach(testThis(_))
+  }
 }
